@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
                 }
             }
             else {
-                if ([name rangeOfString:@" - Google Drive"].location != NSNotFound) {
+                if ([name rangeOfString:@" - Google Drive"].location != NSNotFound || [name isEqualToString:@"OneDrive"]) {
                     // Removing the item from the sfl using it's reference and snapshot index
                     // !!! IMPORTANT NOTE. If you'll aim to repurpose this code this line most likely needs improvement, since snapshot would, as I assume, contain an old version of the sidebar. I'm not 100% sure that's the case but you might need to reassign snapshot and account for that in the parent loop to make sure you're not out of array bounds and not using a mismatched index
                     LSSharedFileListItemRemove(sharedFileListRef, CFArrayGetValueAtIndex(snapshot, i));
