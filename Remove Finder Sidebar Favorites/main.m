@@ -25,13 +25,25 @@ int main(int argc, const char * argv[]) {
             // Getting the display name for the current sidebar item
             NSString* name = (__bridge NSString *)(LSSharedFileListItemCopyDisplayName(CFArrayGetValueAtIndex(snapshot, i)));
             // Comparing the current sidebar item name with the input name
-            if ([name isEqualToString: input]) {
-                // Removing the item from the sfl using it's reference and snapshot index
-                // !!! IMPORTANT NOTE. If you'll aim to repurpose this code this line most likely needs improvement, since snapshot would, as I assume, contain an old version of the sidebar. I'm not 100% sure that's the case but you might need to reassign snapshot and account for that in the parent loop to make sure you're not out of array bounds and not using a mismatched index
-                LSSharedFileListItemRemove(sharedFileListRef, CFArrayGetValueAtIndex(snapshot, i));
+            if (input == NULL) {
+                if ([name isEqualToString: input]) {
+                    // Removing the item from the sfl using it's reference and snapshot index
+                    // !!! IMPORTANT NOTE. If you'll aim to repurpose this code this line most likely needs improvement, since snapshot would, as I assume, contain an old version of the sidebar. I'm not 100% sure that's the case but you might need to reassign snapshot and account for that in the parent loop to make sure you're not out of array bounds and not using a mismatched index
+                    LSSharedFileListItemRemove(sharedFileListRef, CFArrayGetValueAtIndex(snapshot, i));
+                }
+            }
+            else {
+                if ([name rangeOfString:@" - Google Drive"].location != NSNotFound) {
+                    // Removing the item from the sfl using it's reference and snapshot index
+                    // !!! IMPORTANT NOTE. If you'll aim to repurpose this code this line most likely needs improvement, since snapshot would, as I assume, contain an old version of the sidebar. I'm not 100% sure that's the case but you might need to reassign snapshot and account for that in the parent loop to make sure you're not out of array bounds and not using a mismatched index
+                    LSSharedFileListItemRemove(sharedFileListRef, CFArrayGetValueAtIndex(snapshot, i));
+                }
             }
         }
     }
+        
+    // TODO: Do a cycle removing all "- Google Drive" as a ready-made solution
+    // TODO: Put both UNIX Execs into the Applications folder
     
     return 0;
 }
