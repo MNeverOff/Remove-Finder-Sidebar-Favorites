@@ -4,26 +4,6 @@
    <ContextStates>
       <ContextState
          contextName = "main:main.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "LSSharedFileListCopySnapshot(LSSharedFileListCreate(NULL,  kLSSharedFileListFavoriteItems, NULL),NULL)">
-            </PersistentString>
-            <PersistentString
-               value = "LSSharedFileListCreate(kCFAllocatorDefault, kLSSharedFileListFavoriteItems, NULL);">
-            </PersistentString>
-            <PersistentString
-               value = "(CFStringRef)@&quot;com.apple.sidebarlists&quot;">
-            </PersistentString>
-            <PersistentString
-               value = "name">
-            </PersistentString>
-            <PersistentString
-               value = "input == @&quot;(null)&quot;">
-            </PersistentString>
-            <PersistentString
-               value = "t">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
